@@ -1,0 +1,967 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/icon type" href="{% static 'p.jpg' %}">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            font-family: "Aeonik Pro", arial, sans-serif;
+            background-color: #161616;
+            scroll-behavior:smooth;
+            cursor: none;
+            /* background-color: rgba(30, 30, 30, 0.703);  */
+        }
+
+        :root{
+            --theme-color-patter: #FF008E;
+        }
+
+        body:hover .mouse-pointer{
+            opacity: 1;
+        }
+
+        .graidient-light{
+            width: 100%;
+            height: 0vh;
+            padding: 0px;
+            /* position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1; */
+            color: white;
+            background-color: transparent;
+            /* background-image: linear-gradient(0deg, #FF008E); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .graidient-light>div{
+            width: 450px;
+            height: 450px;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            margin: 10px;
+            background-color: transparent;
+            position: absolute;
+            top: -500px;
+            box-shadow: 10px 80px 500px #b90066;
+            z-index: 1;
+        }
+
+        header{
+            width: 100%;
+            height: 10vh;
+
+
+        }
+
+        header>nav{
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position:fixed;
+            top: 0px; 
+            right: 0px; 
+            background-color: rgba(28, 24, 24, 0); 
+            backdrop-filter: blur(4px);
+            border-bottom: solid 0.3px rgb(111, 111, 111);
+            z-index: 2;
+            
+        }
+
+        header>nav img{
+            width: 15%;
+            height: 21%;
+            margin-left: 100px;
+            background-color: transparent;
+            pointer-events: none;
+        }
+
+        header>nav>div{
+            width: 50%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            height: 10vh;
+            background-color: transparent;
+        }
+
+        header>nav>div+div{
+            display: flex;
+            justify-content: space-evenly;
+            /* background-color: violet; */
+        }
+
+        header>nav>div>a{
+            width: fit-content;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            background-color: transparent;
+
+        }
+
+        header>nav>div>a:hover{
+            color: var(--theme-color-patter);
+            text-decoration: none;
+        }
+
+        header>nav>div>a:hover~.mouse-pointer{
+            width: 25px;
+            height: 25px;
+            border: solid 1px var(--theme-color-patter);
+            background-color: rgba(128, 128, 128, 0.315);
+        }
+
+        main{
+            width: 100%;
+            color: white;
+            /* box-shadow: 0px 0px 50px #FF008E,
+                        inset 0px 10px 50px #FF008E; */
+        }
+
+        .main-sec{
+            width: 100%;
+            height: 100vh;
+            background-color: #16161600;
+            display: flex;
+        }
+
+
+        .main-sec>div{
+            width: 50%;
+            height: 100vh;
+            padding: 100px;
+            /* background-color: yellowgreen; */
+        }
+
+        .main-sec>div>h1{
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            background-color: transparent;
+
+        }
+        .main-sec>div>div{
+            
+            height: 80px;
+            /* background-color: #FF008E; */
+        }
+
+        .socialmedia{
+            width: 100%;
+            height: 5vh;
+            display: flex;
+            background-color: transparent;
+        }
+
+        .socialmedia>a{
+            width: fit-content;
+            height: fit-content;
+            padding: 0px;
+            border: none;
+            border-radius: 50%;
+            /* background-color: transparent; */
+        }
+
+        .socialmedia>a>img{
+            width: 35px;
+            height: 35px;
+            /* background-color: #161616bd; */
+            border: none;
+            border-radius: 50%;
+            margin: 5px;
+        }
+
+
+        .contactbtn{
+            height: 5vh;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        .contactbtn>button{
+            width: 165px;
+            height: 7vh;
+            /* padding: 12px 8px; */
+            padding: 0px;
+            padding-left: 3px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            margin-right: 50px;
+            /* border: solid 2px #FF008E, rgb(39, 42, 255); */
+            background-image: linear-gradient(45deg, var(--theme-color-patter), rgb(39, 42, 255));
+        }
+
+
+        .contactbtn>button:hover{
+            box-shadow: 0px 10px 50px var(--theme-color-patter), 0px 10px 25px rgb(0, 0, 255);
+            transition: all 1s;
+        }
+        
+
+        .buttonAchor, .subbutton{
+            width: 158px;
+            height: 6vh;
+            padding: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .subbutton:hover{
+            box-shadow: 0px 0px 25px var(--theme-color-patter);
+            transition: all 0.4s;
+        }
+
+        .buttonAchor{
+            background-color: rgb(0, 0, 0);   
+        }
+
+        .subbutton{
+            background: var(--theme-color-patter)
+        }
+
+        .buttonAchor:hover{
+            color: white;
+        }
+        
+        .contactbtn>button+button{
+            width: 165px;
+            height: 7vh;
+            cursor: pointer;
+            padding: 7px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-image: linear-gradient(45deg, var(--theme-color-patter), rgb(39, 42, 255));
+        }
+
+        .maincard{
+            /* z-index: -1; */
+            margin: 50px;
+            background-image: linear-gradient(-45deg, #ff3ba7, rgb(41, 45, 47));
+            border: solid 1px #00ddff00;
+            border-radius: 10px;
+            /* box-shadow: -0px 10px 100px #ff008c5f; */
+            /* transform:  skewY(-5deg);
+            opacity: 0.2; */
+        }
+
+        
+
+        /* .maincard:hover{
+            transform:  skewY(0deg);
+            opacity: 1;
+            transition: all 2s;
+            box-shadow: 0px 0px 20px #FF008E;
+        } */
+
+        .maincard2{
+            width: 50%;
+            background-image: linear-gradient(-45deg, #ff3ba7, rgb(41, 45, 47));
+            border: solid 1px #00ddff00;
+            border-radius:10px;
+            position: sticky;
+            top: 100px;
+        }
+
+        /* .maincard>div{
+            border: solid 1px #00d6f700;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        } */
+
+        .maincard>div+div, .maincard2>div+div{
+            border: solid 1px #00d6f700;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        
+
+
+        .mini-colors1, .mini-colors2, .mini-colors3{
+            width: 15px;
+            height: 15px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 15px;
+        }
+
+        .cardH{
+            display: flex;
+            align-items: center;
+        }
+
+        .mini-colors1{
+            background-color: orange;
+        }
+        .mini-colors2{
+            background-color: rgb(255, 0, 255);
+        }
+        .mini-colors3{
+            background-color: rgb(0, 214, 0);
+        }
+        
+        .about-sec, .marquee-block, .education-sec, .projects, .contactsection{
+            width: 100%;
+            background-color: #21212100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 150px 0px;
+        }
+
+        .about-sec{
+            height: 80vh;
+        }
+
+        .marquee-block{
+            height: 60vh;
+        }
+        
+
+        .about-sec>div{
+            width: 60%;
+            margin: 0px 100px;
+            
+            
+        }
+
+        .about-sec>div+div+div{
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-sec>div>h4{
+            color: var(--theme-color-patter);
+            font-weight: bold;
+        }
+
+        .about-sec>div>h5{
+            text-align: justify;
+        }
+
+        .about-sec>div>img{
+            width: 300px;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+            pointer-events: none;
+
+        }
+        .about-title, .skills-title, .edu-title, .pro-title, .contact-title{
+            height: fit-content;
+            width: fit-content;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: #0041724f;
+            position: absolute;
+            top: 0px;
+            /* width: 100px !important; */
+            /* border-top: solid 0.3px #00d6f7; */
+            box-shadow: 0px 50px 100px #00d6f7;
+        }
+
+        .about-title{
+            width: 100px !important;
+        }
+        
+        .marquee{
+            width: 80vw;
+            height: 40vh;
+            /* background-color: #cf00a6; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .marquee>div{
+            width: 10vw;
+            height: 20vh;
+            border: solid 0.2px #153d5e;
+            border-color: transparent;
+            border-top-color: #00d6f7;
+            box-shadow: inset 0px 0.5px 1px #00d6f7;
+            border-radius: 10px;
+            display: flex;
+            flex-shrink: 0;
+            white-space: nowrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0e293e3c;
+            color: white;
+            /* border-top-width: solid 0.3px;
+            border-top-color: #00d6f7; */
+            animation: scrolling 20s linear infinite;
+            margin-right: 10vw;
+            /* animation-play-state: running; */
+        }
+        
+        @keyframes scrolling {
+            0%{
+                transform: translateX(0vw);
+            }
+            100%{
+                transform: translateX(-180vw);
+            }
+        }
+        
+        .marquee img{
+            width: 60px;
+            height: 60px;
+        }
+        
+        .marquee>div:hover{
+            /* background-color: #FF008E; */
+            /* animation-play-state: paused; */
+            cursor: pointer;
+            /* color: #FF008E; */
+        }
+        
+        
+        
+        /* .marquee-block{
+            width: 100%;
+            height: 30vh;
+        } */
+        
+        
+        .education-sec{
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .mouse-pointer{
+            width: 10px;
+            height: 10px;
+            border: none;
+            border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
+            cursor: none;
+            background-color: var(--theme-color-patter);
+        }
+        
+        .dimage{
+            width: 330px;
+            height: 460px;
+            margin-left: 250px;
+            filter: drop-shadow(50px);
+            pointer-events: none;
+        }
+
+        .containers{
+            /* background-color: #00d6f7; */
+        }
+        
+
+        .containers>div{
+            width: 500px;
+            height: 140px;
+            padding: 20px;
+            border: solid 0.005rem rgba(128, 128, 128, 0.448);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            /* background-color: #0c00f7; */
+        }
+
+        .containers>div::before{
+            content: '';
+            position: absolute;
+            top: -300px;
+            left: 35%;
+            width: 10%;
+            height: 600%;
+            
+
+        }
+
+        .containers>div::after{
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background-color: #161616;
+            border: none;
+            border-radius: 17px;
+        }
+
+        .containers>div:hover::before{
+            cursor: pointer;
+            background: linear-gradient(0deg, #00d6f7, var(--theme-color-patter));
+            animation: anime 5s linear infinite;
+        }
+
+        .containers>div:hover{
+            transform: scale(1.05,1.05);
+            transition: all 1s;
+            text-shadow: 0px 0px 10px white;
+        }
+
+        @keyframes anime{
+            0%{
+                transform: rotate(0deg);
+            }
+            
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        .containers p{
+            text-align: center;
+            color: aqua;
+        }        
+
+        .containers>div>div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            /* z-index: 2; */
+            /* background-color: #00d6f7; */
+        }
+
+        .containers>div>div>div{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            /* background-color: #b90066; */
+
+        }
+
+        .containers>div>div h4, .containers>div>div h6{
+            width: fit-content;
+        }
+
+        .containers img{
+            width: 30px;
+            height: 30px;
+            margin-right: 30px;
+        }
+
+        .containers{
+            width: 75%;
+        }
+
+        .projects{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* background-color: yellowgreen; */
+        }
+
+
+        .externalLink{
+            width: 18px;
+            height: 18px;
+            margin-left: 5px;
+        }
+
+        .cont-form{
+            width: 100%;
+            padding: 0px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer{
+            width: 100%;
+            height: 15vh;
+        }
+
+        footer>hr{
+            width: 50%;
+            position: relative;
+            left: 25%;
+            background-color:  var(--theme-color-patter);
+        }
+
+        footer>div{
+            width: 49vw;
+            height: 5vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 380px;
+            background-color: #00d6f7;
+        }
+
+        footer>div>p+div{
+            width: 300px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        footer>div>p+div a{
+            padding: 0px;
+            margin-right: 15px;
+            /* background-color: #00d6f7; */
+        }   
+
+        footer>div>p{
+            height: 5vh;
+            /* background-color: #FF008E; */
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        footer>div>p>span{
+            width: fit-content;
+        }
+
+        footer>div>p+div>div{
+            width: fit-content;
+            height: 5vh;
+            /* background-color: #00d6f7; */
+        }
+
+        footer>div>p+div a>img{
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+        }
+
+        footer>div>p+div a>img:hover{
+            transform: scale(1.07,1.07) rotate(360deg);
+            transition: all 0.5s;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="graidient-light"><div></div></div>
+    <header>
+        <!-- <div class="div-header"></div> -->
+        <nav>
+            <div>
+                <img src="{% static 'jayakar-high-resolution-logo-transparent.png' %}" alt="">
+            </div>
+            <div>
+                <a href="#about">ABOUT</a>
+                <a href="#skills">SKILLS</a>
+                <a href="#education">EDUCATION</a>
+                <a href="#projects">PROJECTS</a>
+                <div class="mouse-pointer"></div>
+            </div>
+            
+        </nav>
+    </header>
+    <main>
+        <section class="main-sec">
+            <div>
+                <h1>Hello,<br> This is <span style="color: var(--theme-color-patter); background-color: transparent;">JAYAKAR</span>. I'm a<br><span style="color: var(--theme-color-patter); background-color: transparent;">{</span> <span style="color: rgb(14, 139, 255); background-color: transparent;">Python Full Stack Developer</span> <span style="color: var(--theme-color-patter); background-color: transparent;">}</span>.</h1>
+                <div class="socialmedia">
+                    <a href="https://github.com/JayakarAddepalli" target="_blank" title="Github"> <img src="{% static 'github.png' %}" alt=""></a>
+                    <a href="https://www.linkedin.com/in/addepallijayakar270602/" target="_blank" title="linkedin" ><img src="{% static 'linkedin.png' %}" alt=""></a>
+                </div>
+                <div class="contactbtn">
+                    <button><a href="#contact" style="text-decoration: none;" class="buttonAchor">CONTACT ME <img src="{% static 'user.svg' %}" alt="" style="background-color: transparent; width: 20px; height: 20px;"></a></button>
+                    <button><a id="resume" href="https://drive.google.com/file/d/1GN7tfI33m54o8zvkE7R_vIib1DiRVSpF/view?usp=sharing" target="_blank" style="color: white; text-decoration: none; background-color: transparent; width: 100%; height: 100%; display: flex; justify-content: space-evenly; align-items: center;">GET RESUME <img src="{% static 'download.svg' %}" alt="" style="background-color: transparent; width: 20px; height: 20px;"></a></button>
+                </div>
+            </div>
+            <div class="card p-0 maincard h-75">
+                <div class="card-header cardH  ">
+                    <div class="mini-colors1"></div>
+                    <div class="mini-colors2"></div>
+                    <div class="mini-colors3"></div>
+                </div>
+                <div class="card-body">
+                    <pre style="color: white; background-color: transparent;">
+<span style="color: orange;">class</span> company:
+        company_name = '.....'
+
+        <span style="color: orange;">def</span> <span style="color: rgb(255, 225, 0);">successRate</span>(<span style="color: rgb(255, 0, 255);">self</span>):
+            <span style="color: orange;">return</span> <span style="color: rgb(255, 0, 255);">self</span>.successrate
+
+        <span style="color: orange;">def</span> <span style="color: rgb(255, 0, 255);">__init__</span>(<span style="color: rgb(255, 0, 255);">self</span>, name, skills, hardWorker, problemSolver, quickLearner):
+            <span style="color: rgb(255, 0, 255);">self</span>.Name = name
+            <span style="color: rgb(255, 0, 255);">self</span>.Skills = skills
+            <span style="color: rgb(255, 0, 255);">self</span>.HardWorker = hardWorker
+            <span style="color: rgb(255, 0, 255);">self</span>.ProblemSolver = problemSolver
+            <span style="color: rgb(255, 0, 255);">self</span>.QuickLearner = quickLearner
+            <span style="color: rgb(255, 0, 255);">self</span>.successrate = (<span style="color: rgb(255, 0, 255);">self</span>.HardWorker <span style="color: orange;">and</span> <span style="color: rgb(255, 0, 255);">self</span>.ProblemSolver <span style="color: orange;">and</span> 
+                                <span style="color: rgb(255, 0, 255);">self</span>.QuickLearner <span style="color: orange;">and</span> <span style="color: rgb(0, 0, 255);">len</span>(<span style="color: rgb(255, 0, 255);">self</span>.Skills) >= <span style="color: rgb(14, 139, 255);">5</span>)
+
+skillsList = [<span style="color: rgb(0, 214, 0);">'Python'</span>, <span style="color: rgb(0, 214, 0);">'Django'</span>, <span style="color: rgb(0, 214, 0);">'HTML'</span>, <span style="color: rgb(0, 214, 0);">'CSS'</span>, <span style="color: rgb(0, 214, 0);">'Javascript'</span>, <span style="color: rgb(0, 214, 0);">'SQL'</span>]
+developer = company(<span style="color: rgb(0, 214, 0);">'Jayakar'</span>, skillsList, <span style="color: orange;">True</span>, <span style="color: orange;">True</span>, <span style="color: orange;">True</span>)
+
+<span style="color: rgb(0, 0, 255);">print</span>(developer.successRate()) <span style="color: #00d6f7;">#True</span>
+                    </pre>
+                </div>
+            </div>
+            
+        </section>
+        <!-- <hr style="width: 50%; margin: 0px; padding: 0px; background-color: #555555; box-shadow: 0px 10px 20px #00d6f7;"> -->
+        <section class="about-sec" id="about">
+            <div class=" mx-auto about-title">
+                ABOUT
+            </div>
+            <div>
+                <h4>Who I Am?</h4>
+                <h5>My name is Addepalli Jayakar. I am an entusiastic programmer in my daily life. I love problem solving and to develop websites which can be compatible in any devices. I am passionate about software technologies during my BTech, so I took training on Python Full Stack course. My Core skills are Python, Django, HTML, CSS, Javascript, SQL. I am available for any job opportunities that suits my skills and interests.</h5>
+            </div>
+            <div>
+                <img src="{% static 'p.jpg' %}" alt="">
+            </div>
+        </section>
+        <section class="marquee-block" id="skills">
+            <div class="mx-auto skills-title">
+                SKILLS
+            </div>
+            <div class="marquee">
+                {% for i in skills %}
+                    <div class="">
+                        <img src='{{i.logo.url}}' alt="" style="background-color: transparent;">
+                        <h5 style="text-align: center; background-color: transparent;">{{i.skill1}}</h5>
+                    </div>
+                {% endfor %}
+                {% for i in skills %}
+                    <div class="">
+                        <img src='{{i.logo.url}}' alt="" style="background-color: transparent;">
+                        <h5 style="text-align: center; background-color: transparent;">{{i.skill1}}</h5>
+                    </div>
+                {% endfor %}
+                
+                
+            </div>
+        </section>
+        <section class="education-sec" id="education">
+            <div class="mx-auto edu-title">
+                EDUCATION
+            </div>
+            <div>
+                <img src="{% static '3d.png' %}" alt="" class="dimage">
+            </div>
+            <div class="containers">
+                <div>
+                    <div>
+                        <p>2019-2023</p>
+                        <div>
+                            <img src="{% static 'user.png' %}" alt="">
+                            <div>
+                                <h5>BACHELOR DEGREE</h5>
+                                <h6>Jawaharlal Nehru Technology University Kakinada</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>2017-2019</p>
+                        <div>
+                            <img src="{% static 'user.png' %}" alt="">
+                            <div>
+                                <h5>INTERMEDIATE</h5>
+                                <h6>Sri Chanitanya Junior College, Gudavalli</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>2017</p>
+                        <div>
+                            <img src="{% static 'user.png' %}" alt="">
+                            <div>
+                                <h5>10th STANDARD</h5>
+                                <h6>Dr KKR Gowtham Concept School</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="mx-auto pro-title">
+                PROJECTS
+            </div>
+            <!-- {% for i in projects %}
+                {{i.ProjectName}}
+                
+                {% for skill in i.Tools.all %}
+                    {{ skill.skill1 }}
+                {% endfor %}
+                
+
+                {{i.Description}}
+            {% endfor %}
+
+            {{pro_dict}} -->
+            
+            
+            {% for i in projects %}
+                <div class="card p-0 maincard2 h-75">
+                    <div class="card-header cardH">
+                        <div class="mini-colors1"></div>
+                        <div class="mini-colors2"></div>
+                        <div class="mini-colors3"></div>
+                    </div>
+                    <div class="card-body">
+                        <pre style="color: white; background-color: transparent;">
+    <span style="color: orange;">class</span> Projects:
+    
+            <span style="color: orange;">def</span> <span style="color: rgb(255, 225, 0);">getTheLink</span>(<span style="color: rgb(255, 0, 255);">self</span>):
+                <span style="color: orange;">return</span> <span style="color: rgb(255, 0, 255);">self</span>.__Link
+    
+            <span style="color: orange;">def</span> <span style="color: rgb(255, 0, 255);">__init__</span>(<span style="color: rgb(255, 0, 255);">self</span>, projectname, skills, description, responsive, link):
+                <span style="color: rgb(255, 0, 255);">self</span>.ProjectName = projectname
+                <span style="color: rgb(255, 0, 255);">self</span>.Skills = skills
+                <span style="color: rgb(255, 0, 255);">self</span>.Description = description
+                <span style="color: rgb(255, 0, 255);">self</span>.Responsiveness = responsive
+                <span style="color: rgb(255, 0, 255);">self</span>.__Link = link
+           
+                
+    skillsList = [{% for skill in i.Tools.all %}<span style="color: rgb(0, 214, 0);">'{{ skill.skill1 }}'</span>, {% endfor %}]
+    
+    project = Projects(<span style="color: rgb(0, 214, 0);">'{{i.ProjectName}}'</span>, skillsList, <span style="color: orange;">'{{i.Description}}'</span>, 
+    <span style="color: orange;">'True'</span>, <span style="color: orange;">'{{i.link}}'</span>)
+
+    <span style="color: rgb(0, 0, 255);">print</span>(project.<span style="color: rgb(255, 225, 0);">getTheLink</span>())-------<a href="{{i.link}}" target="_blank" >{{i.ProjectName}}<img src="{% static 'externalLink.png' %}" alt="" class="externalLink"></a> 
+    <span style="color: rgb(0, 0, 255);">print</span>(project.<span style="color: rgb(255, 225, 0);">Responsiveness</span>)-------<span style="color: orange;">True</span>
+                        </pre>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+
+            
+        </section>
+
+        <section class="contactsection" id="contact">
+            <div class=" mx-auto contact-title">
+                Contact
+            </div>
+
+            <div class="cont-form">
+                <div class="card w-50 h-75" style="border: solid #00d6f7 1px; border-radius: 10px;">
+                    <form method="post" enctype="multipart/form-data" class="p-4" style="border: none; border-radius: 10px;">
+                        {% csrf_token %}
+                        <h6 class="mb-5">If any queries you can contact me by sending your details in the below form. I'm available for any job opportunities.</h6>
+
+                        {% for i in messages %}
+                            <div class="alert alert-success">
+                                {{i}}
+                            </div>
+                        {% endfor %}
+
+                        <div class="mb-4">
+                            <label for="" class="form-label">Your Name:</label>
+                            <input type="text" name="username" class="form-control bg-transparent text-white">
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="form-label">Your Email:</label>
+                            <input type="email" name="useremail" class="form-control bg-transparent text-white">
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="form-label">Your Message:</label>
+                            <textarea name="message" id="" class="form-control bg-transparent text-white" cols="1000" rows="10"></textarea>
+                        </div>
+                        <input type="submit" class="subbutton">
+                        
+                    </form>
+                </div>
+                
+            </div>
+        </section>
+        <footer>
+            <hr>
+            <div>
+                <p>&copy;&nbsp;<span style="color: var(--theme-color-patter);">Addepalli Jayakar</span>&nbsp;2024</p>
+                <div>
+                    <div>
+                        <a href="mailto:addepallijayakar@gmail.com"><img src="{% static 'email.png' %}" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="https://www.linkedin.com/in/addepallijayakar270602/" target="_blank"><img src="{% static 'linkedin.png' %}" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/JayakarAddepalli" target="_blank"><img src="{% static 'github.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        let mouse_pointer = document.getElementsByClassName('mouse-pointer')[0];
+
+        document.addEventListener('mousemove',(e)=>{
+            ex = e.clientX
+            ey = e.clientY
+            
+            mouse_pointer.style.top = ey
+            mouse_pointer.style.left = ex
+        })
+
+
+
+    </script>
+
+    <!-- <script>
+        let coder = {
+            name : "Jayakar",
+            skills : ['HTML', 'CSS', 'Javascript', 'Python', 
+                    'Django', 'SQL'],
+            hardWorker : true,
+            quickLearner : true,
+            problemSolver : true,
+            hireAbleRate : a => this.hardWorker && this.quickLearner && this.problemSolver
+        }
+
+        if (coder.hireAbleRate){
+            console.log('Successer');
+        }
+    </script> -->
+</body>
+</html>
